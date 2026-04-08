@@ -16,16 +16,15 @@ const Footer = () => {
               <li><a href="#contact" className="hover:text-light transition">Contact</a></li>
             </ul>
           </div>
-          
+
           <div>
             <h3 className="text-lg font-bold mb-4">Projects</h3>
             <ul className="space-y-2 text-secondary">
               <li><a href="#" className="hover:text-light transition">View All</a></li>
-              <li><a href="#" className="hover:text-light transition">GitHub</a></li>
-              <li><a href="#" className="hover:text-light transition">Case Studies</a></li>
+              <li><a href="https://github.com/naim2442" target="_blank" rel="noreferrer" className="hover:text-light transition">GitHub</a></li>
             </ul>
           </div>
-          
+
           <div>
             <h3 className="text-lg font-bold mb-4">Connect</h3>
             <ul className="space-y-2 text-secondary">
@@ -33,10 +32,10 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        
+
         <div className="border-t border-accent/30 pt-8 text-center">
           <p className="text-secondary">
-            © {currentYear} Naim Talip 
+            © {currentYear} Naim Talip
           </p>
         </div>
       </div>

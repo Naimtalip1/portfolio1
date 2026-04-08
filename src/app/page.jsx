@@ -4,6 +4,7 @@ import { HiLocationMarker, HiAcademicCap, HiStar, HiCode, HiChevronRight } from 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import AuroraBackground from '@/components/AuroraBackground'
+import AsciiBackground from '@/components/AsciiBackground'
 
 export default function Home() {
   const skillCategories = [
@@ -145,7 +146,8 @@ export default function Home() {
       {/* Hero Section */}
       <section id="home" className="pt-32 pb-20 px-4 bg-gradient-to-br from-primary via-primary to-accent text-light min-h-screen flex items-center relative overflow-hidden">
         <AuroraBackground />
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10 w-full">
+        <AsciiBackground />
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-20 w-full">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
