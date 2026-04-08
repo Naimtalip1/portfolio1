@@ -5,8 +5,8 @@ export const portfolioData = {
     name: 'Naim Talip',
     title: 'Software Engineer | AI Engineer | Full-Stack Developer',
     bio: 'Tech enthusiast and Netcentric Computing graduate from Universiti Teknologi MARA with a passion for software engineering and emerging technologies.',
-    email: 'naimtalip1@gmail.com',
-    phone: '+60128974957',
+    email: 'naimtalipwork@gmail.com',
+    phone: '+601153712442',
     location: 'Kuching, Sarawak, Malaysia',
   },
 

@@ -3,6 +3,7 @@
 import { HiLocationMarker, HiAcademicCap, HiStar, HiCode, HiChevronRight } from 'react-icons/hi'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import AuroraBackground from '@/components/AuroraBackground'
 
 export default function Home() {
   const skillCategories = [
@@ -24,7 +25,7 @@ export default function Home() {
     },
     {
       label: 'Tools',
-      items: ['Git', 'GitHub', 'VS Code', 'Android Studio', 'Pipeline', 'Linux'],
+      items: ['Git', 'GitHub', 'VS Code', 'Android Studio', 'Linux'],
     },
   ]
 
@@ -34,28 +35,25 @@ export default function Home() {
       title: 'RANYAI - RAG and Audit Compliance Checker System',
       description: 'AI-powered data ingestion and analysis system using smart parsing and open-source multimodal LLMs to reduce manual enterprise analysis costs.',
       tech: ['Python', 'vLLM', 'ChromaDB', 'FalkorDB', 'RAG'],
-      link: '#',
+      status: 'In development',
     },
     {
       id: 2,
       title: 'EntryBiot Android App',
       description: 'Solo-developed Android app that simplified raw data searches in Google Sheets, improving team efficiency by ~300% (from 20 to 80 units/day).',
       tech: ['Android Studio', 'Java', 'Google Sheets API'],
-      link: '#',
     },
     {
       id: 3,
       title: 'CMS Web App',
       description: 'Self-developed web application to automate the BMW vehicle sales quotation process, drastically improving personal workflow efficiency.',
       tech: ['JavaScript', 'Node.js', 'Tailwind CSS'],
-      link: '#',
     },
     {
       id: 4,
       title: 'RUAI',
       description: 'Government based chatbot that provides information on government services and processes, utilizing RAG system and multimodal LLMs for accurate and efficient responses.',
       tech: ['Python', 'vLLM', 'ChromaDB', 'FalkorDB', 'RAG'],
-      link: '#',
     },
     {
       id: 5,
@@ -66,11 +64,10 @@ export default function Home() {
     },
 
     {
-        id: 6,
-        title: 'NEMUAI - AiOps System',
-        description: 'An AI-powered AIOps monitoring platform that ingests Zabbix infrastructure logs in real-time, performs anomaly detection, and provides natural language log analysis via an AI analyst interface.',
-        tech: ['React', 'TypeScript', 'Python', 'FastAPI', 'Zabbix API'],
-        link: '#',
+      id: 6,
+      title: 'NEMUAI - AiOps System',
+      description: 'An AI-powered AIOps monitoring platform that ingests Zabbix infrastructure logs in real-time, performs anomaly detection, and provides natural language log analysis via an AI analyst interface.',
+      tech: ['React', 'TypeScript', 'Python', 'FastAPI', 'Zabbix API'],
     },
   ]
 
@@ -146,9 +143,10 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-light">
       {/* Hero Section */}
-      <section id="home" className="pt-32 pb-20 px-4 bg-gradient-to-br from-primary via-primary to-accent text-light min-h-screen flex items-center">
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-          <motion.div 
+      <section id="home" className="pt-32 pb-20 px-4 bg-gradient-to-br from-primary via-primary to-accent text-light min-h-screen flex items-center relative overflow-hidden">
+        <AuroraBackground />
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10 w-full">
+          <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -156,8 +154,8 @@ export default function Home() {
             <p className="text-secondary font-mono mb-4 tracking-widest uppercase text-sm">
               &gt; Hello, World!
             </p>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-light">Naim</span>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight font-serif">
+              I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#DBE2EF] via-indigo-300 to-[#6366f1] animate-gradient">Naim</span>
             </h1>
             <p className="text-2xl md:text-3xl mb-8 text-secondary/90 font-light">
               Software Engineer · AI Engineer · Full-Stack Developer
@@ -175,7 +173,7 @@ export default function Home() {
             </div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -185,11 +183,11 @@ export default function Home() {
               <div className="w-3 h-3 rounded-full bg-red-500"></div>
               <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
               <div className="w-3 h-3 rounded-full bg-green-500"></div>
-              <span className="ml-4 text-xs text-light">naim@portfolio:~</span>
+              <span className="ml-4 text-xs text-light">@portfolio:~</span>
             </div>
             <div className="mt-6 overflow-x-auto">
               <pre className="text-light font-bold leading-tight">
-{`
+                {`
  _  _      _          
 | \\| |__ _(_)_ __    
 | .\` / _\` | | '  \\   
@@ -203,17 +201,17 @@ export default function Home() {
 `}
               </pre>
               <div className="mt-4">
-                <p className="text-secondary"><span className="text-light">naim@portfolio</span>:<span className="text-secondary">~</span>$ whoami</p>
+                <p className="text-secondary"><span className="text-light">@portfolio</span>:<span className="text-secondary">~</span>$ whoami</p>
                 <p className="text-light">&gt; Software Engineer &amp; AI Specialist</p>
-                
-                <p className="mt-2 text-secondary"><span className="text-light">naim@portfolio</span>:<span className="text-secondary">~</span>$ cat skills.json</p>
+
+                <p className="mt-2 text-secondary"><span className="text-light">@portfolio</span>:<span className="text-secondary">~</span>$ cat skills.json</p>
                 <p className="text-light">{`{
   "core": ["AI", "Full-Stack", "RAD"],
   "stack": ["Next.js", "Python", "Java"]
 }`}</p>
-                
+
                 <p className="mt-2 text-secondary flex items-center gap-1">
-                  <span className="text-light">naim@portfolio</span>:<span className="text-secondary">~</span>$ <span className="w-2 h-4 bg-secondary animate-pulse inline-block"></span>
+                  <span className="text-light">@portfolio</span>:<span className="text-secondary">~</span>$ <span className="w-2 h-4 bg-secondary animate-pulse inline-block"></span>
                 </p>
               </div>
             </div>
@@ -224,11 +222,11 @@ export default function Home() {
       {/* About Section */}
       <section id="about" className="py-20 px-4 bg-light overflow-hidden">
         <div className="max-w-6xl mx-auto">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl font-bold mb-12 text-primary"
+            className="text-4xl font-bold mb-12 text-primary font-serif"
           >
             About Me
           </motion.h2>
@@ -245,26 +243,23 @@ export default function Home() {
               <p className="text-lg text-primary/80 mb-6 leading-relaxed">
                 Currently serving as a <strong>Software Engineer at IBS</strong>, I specialize in AI-driven solutions, full-stack development, and rapid application development (RAD) — building everything from GenAI pipelines to enterprise investor websites.
               </p>
-              <p className="text-lg text-primary/80 mb-8 leading-relaxed">
-                I'm a highly resourceful individual who takes full ownership of my work, whether it's architecting a RAG system, developing a mobile app solo, or leading rapid website delivery for enterprise clients.
-              </p>
               <div className="flex gap-4 flex-wrap">
                 <div className="bg-white px-4 py-2 rounded-lg shadow text-sm text-primary font-medium flex items-center gap-1"><HiLocationMarker className="text-accent" /> Kuching, Sarawak, Malaysia</div>
                 <div className="bg-white px-4 py-2 rounded-lg shadow text-sm text-primary font-medium flex items-center gap-1"><HiAcademicCap className="text-accent" /> BSc Netcentric Computing, UiTM</div>
                 <div className="bg-white px-4 py-2 rounded-lg shadow text-sm text-primary font-medium flex items-center gap-1"><HiStar className="text-accent" /> Vice Chancellor Award</div>
               </div>
             </motion.div>
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="relative h-80 w-full max-w-sm mx-auto rounded-2xl overflow-hidden shadow-2xl group"
+              className="relative h-96 md:h-[450px] w-full max-w-sm mx-auto rounded-2xl overflow-hidden shadow-2xl group"
             >
               <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent z-10"></div>
-              <Image 
-                src="/profile.jpg" 
-                alt="Naim Talip" 
+              <Image
+                src="/profile.jpg"
+                alt="Naim Talip"
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
@@ -280,17 +275,17 @@ export default function Home() {
       {/* Skills Section */}
       <section id="skills" className="py-20 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl font-bold mb-12 text-primary"
+            className="text-4xl font-bold mb-12 text-primary font-serif"
           >
             Technical Skills
           </motion.h2>
           <div className="space-y-10">
             {skillCategories.map((cat, catIdx) => (
-              <motion.div 
+              <motion.div
                 key={catIdx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -300,8 +295,8 @@ export default function Home() {
                 <h3 className="text-lg font-bold text-accent mb-4 uppercase tracking-wide">{cat.label}</h3>
                 <div className="flex flex-wrap gap-3">
                   {cat.items.map((skill, idx) => (
-                    <motion.span 
-                      key={idx} 
+                    <motion.span
+                      key={idx}
                       whileHover={{ scale: 1.05 }}
                       className="bg-light text-primary px-4 py-2 rounded-full font-medium hover:bg-accent hover:text-light transition cursor-default shadow-sm"
                     >
@@ -323,13 +318,13 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold mb-4 text-primary">Featured Projects</h2>
+            <h2 className="text-4xl font-bold mb-4 text-primary font-serif">Featured Projects</h2>
             <p className="text-primary/70 mb-12">Real-world systems and applications I've built.</p>
           </motion.div>
           <div className="grid md:grid-cols-2 gap-8">
             {projects.map((project, idx) => (
-              <motion.div 
-                key={project.id} 
+              <motion.div
+                key={project.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -338,7 +333,7 @@ export default function Home() {
                 className="bg-white rounded-2xl shadow-lg overflow-hidden transition-shadow hover:shadow-2xl"
               >
                 <div className="bg-gradient-to-br from-primary to-accent h-40 flex items-center justify-center px-6">
-                  <h3 className="text-white text-2xl font-bold text-center">{project.title}</h3>
+                  <h3 className="text-white text-2xl font-bold text-center font-serif">{project.title}</h3>
                 </div>
                 <div className="p-6">
                   <p className="text-primary/80 mb-5 leading-relaxed">{project.description}</p>
@@ -349,9 +344,15 @@ export default function Home() {
                       </span>
                     ))}
                   </div>
-                  <a href={project.link} className="text-accent font-semibold hover:text-primary">
-                    View Project →
-                  </a>
+                  {project.link ? (
+                    <a href={project.link} className="text-accent font-semibold hover:text-primary">
+                      View Project →
+                    </a>
+                  ) : project.status ? (
+                    <span className="text-accent/60 font-semibold italic">
+                      {project.status}
+                    </span>
+                  ) : null}
                 </div>
               </motion.div>
             ))}
@@ -362,18 +363,18 @@ export default function Home() {
       {/* Experience Section */}
       <section id="experience" className="py-20 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl font-bold mb-12 text-primary"
+            className="text-4xl font-bold mb-12 text-primary font-serif"
           >
             Work Experience
           </motion.h2>
           <div className="space-y-10">
             {experience.map((exp, index) => (
-              <motion.div 
-                key={index} 
+              <motion.div
+                key={index}
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -382,7 +383,7 @@ export default function Home() {
               >
                 <div className="absolute -left-2.5 top-0 w-5 h-5 bg-accent rounded-full border-4 border-white"></div>
                 <div className="flex flex-wrap items-center gap-3 mb-1">
-                  <h3 className="text-2xl font-bold text-primary">{exp.title}</h3>
+                  <h3 className="text-2xl font-bold text-primary font-serif">{exp.title}</h3>
                 </div>
                 <p className="text-lg text-accent font-semibold">{exp.company}</p>
                 <p className="text-primary/60 text-sm mb-4">{exp.location} · {exp.period}</p>
@@ -403,25 +404,25 @@ export default function Home() {
       {/* Education Section */}
       <section id="education" className="py-20 px-4 bg-light">
         <div className="max-w-4xl mx-auto">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl font-bold mb-12 text-primary"
+            className="text-4xl font-bold mb-12 text-primary font-serif"
           >
             Education
           </motion.h2>
           <div className="space-y-8">
             {education.map((edu, index) => (
-              <motion.div 
-                key={index} 
+              <motion.div
+                key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 className="bg-white rounded-2xl p-8 shadow-md hover:shadow-lg transition"
               >
-                <h3 className="text-xl font-bold text-primary mb-1">{edu.degree}</h3>
+                <h3 className="text-xl font-bold text-primary mb-1 font-serif">{edu.degree}</h3>
                 <p className="text-accent font-semibold mb-1">{edu.school}</p>
                 <p className="text-primary/60 text-sm mb-3">{edu.period}</p>
                 {edu.details && <p className="text-primary/80 font-medium">{edu.details}</p>}
@@ -433,23 +434,27 @@ export default function Home() {
 
       {/* Contact Section */}
       <section id="contact" className="py-20 px-4 bg-primary text-light">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           className="max-w-4xl mx-auto text-center"
         >
-          <h2 className="text-4xl font-bold mb-6">Let's Work Together</h2>
+          <h2 className="text-4xl font-bold mb-6 font-serif">Let's Work Together</h2>
           <p className="text-xl mb-4 text-secondary">
             I'm open to new opportunities, collaborations, and interesting projects.
           </p>
-          <p className="text-secondary/80 mb-12 flex items-center justify-center gap-2"><HiLocationMarker className="text-accent" /> Kuching, Sarawak, Malaysia · +60128974957</p>
+          <p className="text-secondary/80 mb-12 flex items-center justify-center gap-2"><HiLocationMarker className="text-accent" /> Kuching, Sarawak, Malaysia · +601153712442</p>
           <div className="flex gap-6 justify-center flex-wrap mb-12">
-            <a href="mailto:naimtalip1@gmail.com" className="bg-accent hover:bg-accent/80 text-light px-8 py-3 rounded-lg font-semibold transition">
-              naimtalip1@gmail.com
+            <a href="mailto:naimtalipwork@gmail.com" className="bg-accent hover:bg-accent/80 text-light px-8 py-3 rounded-lg font-semibold transition">
+              naimtalipwork@gmail.com
             </a>
             <a href="https://linkedin.com/in/naimtalip2442" target="_blank" rel="noreferrer" className="border-2 border-accent text-accent hover:bg-accent hover:text-light px-8 py-3 rounded-lg font-semibold transition">
               LinkedIn
+            </a>
+            <a href="/Naim_Talip_ATS.pdf" download="Naim_Talip_Resume.pdf" target="_blank" rel="noreferrer" className="border-2 border-secondary text-secondary hover:bg-secondary hover:text-primary px-8 py-3 rounded-lg font-semibold transition flex items-center gap-2">
+              <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+              Download Resume
             </a>
           </div>
         </motion.div>
