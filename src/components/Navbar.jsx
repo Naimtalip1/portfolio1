@@ -27,17 +27,18 @@ const Navbar = () => {
         <div className="relative">
           <div className="flex justify-between md:justify-center items-center h-12">
             {/* Mobile Logo */}
-            <a href="#home" className="md:hidden text-light font-bold text-xl tracking-wider">
+            <Link href="/#home" className="md:hidden text-light font-bold text-xl tracking-wider">
               NT.
-            </a>
+            </Link>
 
             <div className="hidden md:flex space-x-8">
-              <a href="#home" className="text-sm font-medium text-secondary hover:text-light transition">Home</a>
-              <a href="#about" className="text-sm font-medium text-secondary hover:text-light transition">About</a>
-              <a href="#skills" className="text-sm font-medium text-secondary hover:text-light transition">Skills</a>
-              <a href="#projects" className="text-sm font-medium text-secondary hover:text-light transition">Projects</a>
-              <a href="#experience" className="text-sm font-medium text-secondary hover:text-light transition">Experience</a>
-              <a href="#contact" className="text-sm font-medium text-secondary hover:text-light transition">Contact</a>
+              <Link href="/#home" className="text-sm font-medium text-secondary hover:text-light transition">Home</Link>
+              <Link href="/#about" className="text-sm font-medium text-secondary hover:text-light transition">About</Link>
+              <Link href="/#skills" className="text-sm font-medium text-secondary hover:text-light transition">Skills</Link>
+              <Link href="/#projects" className="text-sm font-medium text-secondary hover:text-light transition">Projects</Link>
+              <Link href="/#experience" className="text-sm font-medium text-secondary hover:text-light transition">Experience</Link>
+              <Link href="/certifications" className="text-sm font-medium text-secondary hover:text-light transition">Certifications</Link>
+              <Link href="/#contact" className="text-sm font-medium text-secondary hover:text-light transition">Contact</Link>
             </div>
 
             <button 
@@ -56,12 +57,13 @@ const Navbar = () => {
             ${isOpen ? 'max-h-64 opacity-100 mt-4' : 'max-h-0 opacity-0'}
           `}>
             <div className="flex flex-col space-y-4 pb-4 text-center w-48 mx-auto">
-              <a href="#home" onClick={() => setIsOpen(false)} className="text-secondary hover:text-light">Home</a>
-              <a href="#about" onClick={() => setIsOpen(false)} className="text-secondary hover:text-light">About</a>
-              <a href="#skills" onClick={() => setIsOpen(false)} className="text-secondary hover:text-light">Skills</a>
-              <a href="#projects" onClick={() => setIsOpen(false)} className="text-secondary hover:text-light">Projects</a>
-              <a href="#experience" onClick={() => setIsOpen(false)} className="text-secondary hover:text-light">Experience</a>
-              <a href="#contact" onClick={() => setIsOpen(false)} className="text-secondary hover:text-light">Contact</a>
+              <Link href="/#home" onClick={() => setIsOpen(false)} className="text-secondary hover:text-light">Home</Link>
+              <Link href="/#about" onClick={() => setIsOpen(false)} className="text-secondary hover:text-light">About</Link>
+              <Link href="/#skills" onClick={() => setIsOpen(false)} className="text-secondary hover:text-light">Skills</Link>
+              <Link href="/#projects" onClick={() => setIsOpen(false)} className="text-secondary hover:text-light">Projects</Link>
+              <Link href="/#experience" onClick={() => setIsOpen(false)} className="text-secondary hover:text-light">Experience</Link>
+              <Link href="/certifications" onClick={() => setIsOpen(false)} className="text-secondary hover:text-light">Certifications</Link>
+              <Link href="/#contact" onClick={() => setIsOpen(false)} className="text-secondary hover:text-light">Contact</Link>
             </div>
           </div>
         </div>
