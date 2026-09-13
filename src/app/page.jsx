@@ -32,8 +32,7 @@ import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
 import { Separator } from '@/components/ui/separator'
 
-import AuroraBackground from '@/components/AuroraBackground'
-import AsciiBackground from '@/components/AsciiBackground'
+import HeroBackground from '@/components/HeroBackground'
 
 export default function Home() {
   const skillCategories = [
@@ -228,8 +227,7 @@ export default function Home() {
         id="home"
         className="relative min-h-[92vh] flex items-center justify-center pt-32 pb-20 px-4 overflow-hidden border-b border-border/50 bg-gradient-to-b from-[#0b1b36] via-[#112D4E] to-background text-slate-100"
       >
-        <AuroraBackground />
-        <AsciiBackground />
+        <HeroBackground />
 
         <div className="relative z-20 max-w-6xl mx-auto w-full grid lg:grid-cols-12 gap-12 items-center">
           {/* Hero Left Content */}
