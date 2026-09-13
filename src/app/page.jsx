@@ -225,7 +225,7 @@ export default function Home() {
       {/* Hero Section */}
       <section
         id="home"
-        className="relative min-h-[92vh] flex items-center justify-center pt-32 pb-20 px-4 overflow-hidden border-b border-border/50 bg-gradient-to-b from-[#0b1b36] via-[#112D4E] to-background text-slate-100"
+        className="relative min-h-[92vh] flex items-center justify-center pt-32 pb-20 px-4 overflow-hidden border-b border-slate-800 bg-[#0a172e] text-slate-100"
       >
         <HeroBackground />
 
