@@ -1,6 +1,7 @@
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import { TooltipProvider } from '@/components/ui/tooltip'
 import { Playfair_Display, Inter } from 'next/font/google'
 
 const playfair = Playfair_Display({
@@ -14,17 +15,19 @@ const inter = Inter({
 })
 
 export const metadata = {
-  title: 'Naim Talip - Software Engineer',
+  title: 'Naim Talip - Software Engineer | AI & Full-Stack Developer',
   description: 'Portfolio of Naim Talip — Software Engineer specializing in AI-driven solutions, full-stack development, and RAD. Based in Kuching, Sarawak.',
 }
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
-      <body className="font-sans text-primary">
-        <Navbar />
-        {children}
-        <Footer />
+    <html lang="en" className={`${playfair.variable} ${inter.variable} scroll-smooth`}>
+      <body className="font-sans antialiased min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
+        <TooltipProvider delayDuration={200}>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </TooltipProvider>
       </body>
     </html>
   )

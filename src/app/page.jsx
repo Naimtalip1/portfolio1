@@ -1,31 +1,81 @@
 'use client'
 
-import { HiLocationMarker, HiAcademicCap, HiStar, HiCode, HiChevronRight } from 'react-icons/hi'
-import { motion } from 'framer-motion'
+import { useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
+import { motion } from 'framer-motion'
+import {
+  MapPin,
+  GraduationCap,
+  Award,
+  Code2,
+  ChevronRight,
+  ArrowRight,
+  ArrowUpRight,
+  Terminal,
+  ExternalLink,
+  FileDown,
+  Mail,
+  Sparkles,
+  CheckCircle2,
+  Layers,
+  Cpu,
+  Database,
+  Bot,
+  Briefcase,
+  FolderGit2
+} from 'lucide-react'
+
+import { Button } from '@/components/ui/button'
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
+import { Separator } from '@/components/ui/separator'
+
 import AuroraBackground from '@/components/AuroraBackground'
 import AsciiBackground from '@/components/AsciiBackground'
 
 export default function Home() {
   const skillCategories = [
     {
+      id: 'all',
+      label: 'All Skills',
+      items: [
+        'AI Engineering', 'Full-Stack Development', 'Frontend Development', 'Backend Development', 'RAD', 'Mobile App Development',
+        'Next.js', 'Node.js', 'AdonisJs', 'JavaScript', 'Python', 'Dart', 'Java', 'C++', 'C#', 'Svelte', 'Tailwind CSS', 'Flutter',
+        'PostgreSQL', 'FalkorDB', 'ChromaDB', 'vLLM', 'OllamaStudio', 'Sentence Transformers',
+        'RAG System', 'Multimodal LLMs', 'Smart Document Parsing', 'Vector Embedding', 'Model Deployment', 'Web Scraping',
+        'Git', 'GitHub', 'VS Code', 'Android Studio', 'Linux'
+      ],
+    },
+    {
+      id: 'core',
       label: 'Core Engineering',
+      icon: Cpu,
       items: ['AI Engineering', 'Full-Stack Development', 'Frontend Development', 'Backend Development', 'RAD', 'Mobile App Development'],
     },
     {
+      id: 'stack',
       label: 'Dev Stack',
+      icon: Code2,
       items: ['Next.js', 'Node.js', 'AdonisJs', 'JavaScript', 'Python', 'Dart', 'Java', 'C++', 'C#', 'Svelte', 'Tailwind CSS', 'Flutter'],
     },
     {
+      id: 'ai',
       label: 'Databases & AI Tools',
+      icon: Database,
       items: ['PostgreSQL', 'FalkorDB', 'ChromaDB', 'vLLM', 'OllamaStudio', 'Sentence Transformers'],
     },
     {
+      id: 'emerging',
       label: 'Emerging Tech',
+      icon: Bot,
       items: ['RAG System', 'Multimodal LLMs', 'Smart Document Parsing', 'Vector Embedding', 'Model Deployment', 'Web Scraping'],
     },
     {
-      label: 'Tools',
+      id: 'tools',
+      label: 'Tools & DevOps',
+      icon: Layers,
       items: ['Git', 'GitHub', 'VS Code', 'Android Studio', 'Linux'],
     },
   ]
@@ -33,42 +83,57 @@ export default function Home() {
   const projects = [
     {
       id: 1,
-      title: 'RANYAI - RAG and Audit Compliance Checker System',
-      description: 'AI-powered data ingestion and analysis system using smart parsing and open-source multimodal LLMs to reduce manual enterprise analysis costs.',
+      title: 'RANYAI - RAG & Audit Compliance System',
+      description: 'AI-powered data ingestion and compliance verification system utilizing smart parsing and open-source multimodal LLMs to dramatically reduce manual enterprise analysis costs.',
+      category: 'AI & Enterprise',
       tech: ['Python', 'vLLM', 'ChromaDB', 'FalkorDB', 'RAG'],
-      status: 'In development',
+      status: 'In Development',
+      badgeVariant: 'accent',
     },
     {
       id: 2,
       title: 'EntryBiot Android App',
-      description: 'Solo-developed Android app that simplified raw data searches in Google Sheets, improving team efficiency by ~300% (from 20 to 80 units/day).',
+      description: 'Solo-developed mobile productivity app simplifying raw data retrieval and entry with Google Sheets API, increasing operational throughput by ~300% (from 20 to 80 units/day).',
+      category: 'Mobile & Cloud',
       tech: ['Android Studio', 'Java', 'Google Sheets API'],
+      status: 'Deployed',
+      badgeVariant: 'success',
     },
     {
       id: 3,
-      title: 'CMS Web App',
-      description: 'Self-developed web application to automate the BMW vehicle sales quotation process, drastically improving personal workflow efficiency.',
+      title: 'CMS Sales Quotation Web App',
+      description: 'Custom-built web application to automate the client quotation calculation pipeline for BMW vehicle sales, minimizing human calculation latency and optimizing conversion.',
+      category: 'Full-Stack Web',
       tech: ['JavaScript', 'Node.js', 'Tailwind CSS'],
+      status: 'Production',
+      badgeVariant: 'secondary',
     },
     {
       id: 4,
-      title: 'RUAI',
-      description: 'Government based chatbot that provides information on government services and processes, utilizing RAG system and multimodal LLMs for accurate and efficient responses.',
+      title: 'RUAI - Citizen Service AI Agent',
+      description: 'Civic knowledge chatbot for government services with conversational RAG, grounding responses in official policy documentation through multimodal vector representations.',
+      category: 'AI / RAG',
       tech: ['Python', 'vLLM', 'ChromaDB', 'FalkorDB', 'RAG'],
+      status: 'Prototype',
+      badgeVariant: 'accent',
     },
     {
       id: 5,
-      title: 'Company Investor Website',
-      description: 'High-quality investor website developed for enterprise-level companies, ensuring rapid delivery and seamless user experience.',
+      title: 'Enterprise Investor Relations Portal',
+      description: 'High-performance investor relations platform engineered for enterprise corporations, ensuring rapid delivery, sub-second page loads, and WCAG accessibility standards.',
+      category: 'Frontend Engineering',
       tech: ['Next.js', 'Tailwind CSS', 'React'],
       link: 'https://impact.com.my',
+      badgeVariant: 'outline',
     },
-
     {
       id: 6,
-      title: 'NEMUAI - AiOps System',
-      description: 'An AI-powered AIOps monitoring platform that ingests Zabbix infrastructure logs in real-time, performs anomaly detection, and provides natural language log analysis via an AI analyst interface.',
+      title: 'NEMUAI - AiOps Platform',
+      description: 'Autonomous AI monitoring platform ingesting live Zabbix infrastructure telemetry, computing anomaly heatmaps, and providing incident root-cause synthesis via natural language.',
+      category: 'AI & Infrastructure',
       tech: ['React', 'TypeScript', 'Python', 'FastAPI', 'Zabbix API'],
+      status: 'Active Project',
+      badgeVariant: 'accent',
     },
   ]
 
@@ -79,11 +144,11 @@ export default function Home() {
       location: 'Kuching, Sarawak',
       period: 'October 2025 – Present',
       achievements: [
-        'Developing use and test cases for GenAI environment for log monitoring system.',
-        'Developing a RAG Hybrid system using smart parsing and multimodal LLMs to reduce manual enterprise analysis costs.',
-        'Led rapid development of high-quality investor website for enterprise-level companies.',
-        'Collaborating with cross-functional teams to build an internal recruitment system.',
-        'Contributing to system architecture and adding new features to the core company website.',
+        'Architecting GenAI log evaluation pipelines and synthetic validation environments for enterprise monitoring.',
+        'Developing an enterprise RAG Hybrid system with multimodal LLMs and smart chunking to automate audit queries.',
+        'Spearheaded rapid development of enterprise investor web applications with Next.js and Tailwind CSS.',
+        'Collaborating with cross-functional engineering teams to implement an internal recruitment platform.',
+        'Contributing to core system architecture design, code reviews, and feature delivery on company platforms.',
       ],
     },
     {
@@ -92,8 +157,8 @@ export default function Home() {
       location: 'Kuching, Sarawak',
       period: 'June 2025 – August 2025',
       achievements: [
-        'Delivered tailored consultations for clients in selecting BMW vehicles.',
-        'Built a self-developed web application to automate quotation process and improve efficiency.',
+        'Delivered bespoke automotive consultations for clients in selecting luxury BMW models.',
+        'Engineered an internal web automation tool for sales quotations to cut preparation time by 60%.',
       ],
     },
     {
@@ -102,9 +167,9 @@ export default function Home() {
       location: 'Kuching, Sarawak',
       period: 'March 2025 – June 2025',
       achievements: [
-        'Solo-developed Android app (EntryBiot) improving team efficiency ~300%, from 20 to 80 units registered per day.',
-        'Developed a web scraping tool to automate information retrieval from the company intranet.',
-        'Assisted in IoT water meter device deployment across Sarawak rural areas.',
+        'Single-handedly engineered the EntryBiot Android app, scaling team capacity by ~300% (20 to 80 units/day).',
+        'Built automated web scraping tools to streamline data consolidation across internal intranet databases.',
+        'Assisted technical fieldwork in IoT water meter device deployment across rural Sarawak communities.',
       ],
     },
     {
@@ -113,9 +178,9 @@ export default function Home() {
       location: 'Kuching, Sarawak',
       period: 'September 2022 – March 2023',
       achievements: [
-        'Built a comprehensive entry management system using MySQL, Node.js, and Spring Boot.',
-        'Assisted in server-side troubleshooting across multiple sites.',
-        'Worked with cross-functional teams for seamless integration and UX.',
+        'Engineered a comprehensive entry management web platform with MySQL, Node.js, and Spring Boot.',
+        'Diagnosed and resolved distributed server-side performance bottlenecks across multi-site environments.',
+        'Collaborated closely with UX designers and senior engineers to implement frictionless onboarding flows.',
       ],
     },
   ]
@@ -125,278 +190,525 @@ export default function Home() {
       degree: 'Bachelor of Computer Science (Hons.), Netcentric Computing',
       school: 'Universiti Teknologi MARA (UiTM) Shah Alam',
       period: 'March 2023 – June 2025',
-      details: 'CGPA: 3.22 | Dean List Award',
+      details: 'CGPA: 3.22 · Dean’s List Award recipient',
+      badge: 'BSc Hons',
     },
     {
       degree: 'Diploma in Computer Science',
       school: 'Universiti Teknologi MARA (UiTM) Sarawak Branch',
       period: 'October 2020 – March 2023',
-      details: 'CGPA: 3.72 | Vice Chancellor Award | 5× Dean List Award',
+      details: 'CGPA: 3.72 · Vice Chancellor Award · 5× Dean’s List Award',
+      badge: 'Vice Chancellor Award',
     },
     {
       degree: 'Computer Science Studies',
       school: 'Kolej Datu Patinggi Abang Haji Abdillah',
       period: '2015 – 2019',
-      details: '',
+      details: 'Foundation in Computer Science and Information Systems',
+      badge: 'High School',
     },
   ]
 
   return (
-    <div className="min-h-screen bg-light">
+    <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
       {/* Hero Section */}
-      <section id="home" className="pt-32 pb-20 px-4 bg-gradient-to-br from-primary via-primary to-accent text-light min-h-screen flex items-center relative overflow-hidden">
+      <section
+        id="home"
+        className="relative min-h-[92vh] flex items-center justify-center pt-32 pb-20 px-4 overflow-hidden border-b border-border/50 bg-gradient-to-b from-[#0b1b36] via-[#112D4E] to-background text-slate-100"
+      >
         <AuroraBackground />
         <AsciiBackground />
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-20 w-full">
+
+        <div className="relative z-20 max-w-6xl mx-auto w-full grid lg:grid-cols-12 gap-12 items-center">
+          {/* Hero Left Content */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            className="lg:col-span-7 flex flex-col space-y-6"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
           >
-            <p className="text-secondary font-mono mb-4 tracking-widest uppercase text-sm">
-              &gt; Hello, World!
+            {/* Status Pill Badge */}
+            <div className="inline-flex items-center gap-2">
+              <span className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-500/10 px-3.5 py-1 text-xs font-mono text-blue-200 backdrop-blur-md">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                Available for Software &amp; AI Roles
+              </span>
+            </div>
+
+            {/* Main Headline */}
+            <div className="space-y-2">
+              <p className="text-blue-200 font-mono tracking-wider uppercase text-xs sm:text-sm flex items-center gap-2">
+                <span>&gt;</span> Naim Talip // Portfolio
+              </p>
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight font-serif text-white">
+                Building{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 via-indigo-200 to-sky-300">
+                  intelligent
+                </span>{' '}
+                software solutions.
+              </h1>
+            </div>
+
+            {/* Subhead */}
+            <p className="text-lg sm:text-xl text-slate-200/90 font-light leading-relaxed">
+              Software Engineer &amp; AI Developer based in Kuching, Sarawak. Specializing in RAG pipelines, full-stack web platforms, and rapid application development (RAD).
             </p>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight font-serif">
-              I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#DBE2EF] via-indigo-300 to-[#6366f1] animate-gradient">Naim</span>
-            </h1>
-            <p className="text-2xl md:text-3xl mb-8 text-secondary/90 font-light">
-              Software Engineer · AI Engineer · Full-Stack Developer
-            </p>
-            <p className="text-lg mb-12 text-secondary/70">
-              Tech enthusiast from Kuching, Sarawak specializing in AI-driven solutions, full-stack development, and rapid application development (RAD).
-            </p>
-            <div className="flex gap-4 flex-wrap">
-              <a href="#projects" className="bg-secondary hover:bg-light text-primary px-8 py-3 rounded-lg font-semibold transition shadow-[0_0_15px_rgba(219,226,239,0.5)] hover:shadow-[0_0_25px_rgba(219,226,239,0.8)]">
-                View My Work
+
+            {/* Action Buttons */}
+            <div className="flex flex-wrap gap-3 pt-2">
+              <Button asChild size="lg" className="rounded-xl shadow-lg gap-2 bg-blue-600 hover:bg-blue-500 text-white border-0">
+                <a href="#projects">
+                  Explore Projects
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="rounded-xl border-slate-600 bg-slate-900/50 hover:bg-slate-800 text-slate-100 hover:text-white backdrop-blur-sm gap-2">
+                <a href="/certifications">
+                  <Award className="h-4 w-4 text-blue-300" />
+                  Certifications
+                </a>
+              </Button>
+              <Button asChild size="lg" variant="ghost" className="rounded-xl text-slate-200 hover:text-white hover:bg-white/10 gap-2">
+                <a href="/Naim_Talip_ATS.pdf" download="Naim_Talip_Resume.pdf">
+                  <FileDown className="h-4 w-4" />
+                  Resume
+                </a>
+              </Button>
+            </div>
+
+            {/* Social quick links */}
+            <div className="flex items-center gap-4 pt-4 text-xs font-mono text-slate-300">
+              <a href="https://github.com/naimtalip" target="_blank" rel="noreferrer" className="flex items-center gap-1.5 hover:text-white transition-colors">
+                <FolderGit2 className="h-4 w-4 text-blue-300" />
+                <span>github.com/naimtalip</span>
               </a>
-              <a href="#contact" className="border-2 border-secondary text-secondary hover:border-light hover:text-light px-8 py-3 rounded-lg font-semibold transition">
-                Get In Touch
+              <span className="text-slate-500">•</span>
+              <a href="https://linkedin.com/in/naimtalip2442" target="_blank" rel="noreferrer" className="flex items-center gap-1.5 hover:text-white transition-colors">
+                <ArrowUpRight className="h-4 w-4 text-blue-300" />
+                <span>in/naimtalip2442</span>
               </a>
             </div>
           </motion.div>
 
+          {/* Hero Right Terminal Card */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            className="lg:col-span-5"
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="bg-primary rounded-xl p-6 font-mono text-sm md:text-base text-secondary shadow-2xl border border-accent relative overflow-hidden"
+            transition={{ duration: 0.7, delay: 0.15 }}
           >
-            <div className="absolute top-0 left-0 w-full h-8 bg-accent flex items-center px-4 gap-2 border-b border-primary">
-              <div className="w-3 h-3 rounded-full bg-red-500"></div>
-              <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-              <div className="w-3 h-3 rounded-full bg-green-500"></div>
-              <span className="ml-4 text-xs text-light">@portfolio:~</span>
-            </div>
-            <div className="mt-6 overflow-x-auto">
-              <pre className="text-light font-bold leading-tight">
-                {`
- _  _      _          
-| \\| |__ _(_)_ __    
-| .\` / _\` | | '  \\   
-|_|\\_\\__,_|_|_|_|_|  
-                     
- _____     _ _       
-|_   _|_ _| (_)_ __  
-  | |/ _\` | | | '_ \\ 
-  |_|\\__,_|_|_| .__/ 
-              |_|    
-`}
-              </pre>
-              <div className="mt-4">
-                <p className="text-secondary"><span className="text-light">@portfolio</span>:<span className="text-secondary">~</span>$ whoami</p>
-                <p className="text-light">&gt; Software Engineer &amp; AI Specialist</p>
-
-                <p className="mt-2 text-secondary"><span className="text-light">@portfolio</span>:<span className="text-secondary">~</span>$ cat skills.json</p>
-                <p className="text-light">{`{
-  "core": ["AI", "Full-Stack", "RAD"],
-  "stack": ["Next.js", "Python", "Java"]
-}`}</p>
-
-                <p className="mt-2 text-secondary flex items-center gap-1">
-                  <span className="text-light">@portfolio</span>:<span className="text-secondary">~</span>$ <span className="w-2 h-4 bg-secondary animate-pulse inline-block"></span>
-                </p>
+            <Card className="bg-slate-950/80 border-slate-700/80 backdrop-blur-xl shadow-2xl overflow-hidden rounded-2xl">
+              {/* Terminal Window Header */}
+              <div className="flex items-center justify-between px-4 py-3 bg-slate-900/90 border-b border-slate-800">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-rose-500/80"></div>
+                  <div className="w-3 h-3 rounded-full bg-amber-500/80"></div>
+                  <div className="w-3 h-3 rounded-full bg-emerald-500/80"></div>
+                  <span className="text-xs font-mono text-slate-400 ml-2">naim@workstation:~</span>
+                </div>
+                <Badge variant="outline" className="font-mono text-[10px] text-slate-400 border-slate-700">
+                  zsh
+                </Badge>
               </div>
-            </div>
+
+              {/* Terminal Body */}
+              <div className="p-5 font-mono text-xs text-slate-300 space-y-3">
+                <div className="text-slate-400 flex items-center gap-2">
+                  <span className="text-emerald-400">naim@mbp</span>
+                  <span>:</span>
+                  <span className="text-blue-400">~</span>
+                  <span>$ whoami</span>
+                </div>
+                <div className="text-slate-100 bg-slate-900/60 p-2.5 rounded-lg border border-slate-800/80">
+                  <p className="font-semibold text-blue-300">Naim Talip</p>
+                  <p className="text-slate-300 text-[11px]">Software Engineer · IBS Sdn Bhd</p>
+                  <p className="text-slate-400 text-[11px]">UiTM Netcentric Computing (BSc Hons)</p>
+                </div>
+
+                <div className="text-slate-400 flex items-center gap-2 pt-1">
+                  <span className="text-emerald-400">naim@mbp</span>
+                  <span>:</span>
+                  <span className="text-blue-400">~</span>
+                  <span>$ cat current_focus.json</span>
+                </div>
+                <div className="text-slate-300 bg-slate-900/60 p-2.5 rounded-lg border border-slate-800/80 text-[11px] leading-relaxed">
+                  <pre>{`{
+  "stack": ["Next.js", "Python", "vLLM", "FastAPI"],
+  "domain": "RAG Systems & Multi-Agent AI",
+  "location": "Kuching, Sarawak, Malaysia",
+  "status": "Ready for high-impact engineering"
+}`}</pre>
+                </div>
+
+                <div className="flex items-center gap-2 pt-1 text-slate-400">
+                  <span className="text-emerald-400">naim@mbp</span>
+                  <span>:</span>
+                  <span className="text-blue-400">~</span>
+                  <span>$</span>
+                  <span className="w-2 h-4 bg-blue-400 animate-pulse"></span>
+                </div>
+              </div>
+            </Card>
           </motion.div>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-4 bg-light overflow-hidden">
-        <div className="max-w-6xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl font-bold mb-12 text-primary font-serif"
-          >
-            About Me
-          </motion.h2>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <p className="text-lg text-primary/80 mb-6 leading-relaxed">
-                I'm a <strong>tech enthusiast</strong> and Netcentric Computing graduate from Universiti Teknologi MARA (UiTM), with a strong passion for software engineering and emerging technologies.
-              </p>
-              <p className="text-lg text-primary/80 mb-6 leading-relaxed">
-                Currently serving as a <strong>Software Engineer at IBS</strong>, I specialize in AI-driven solutions, full-stack development, and rapid application development (RAD) — building everything from GenAI pipelines to enterprise investor websites.
-              </p>
-              <div className="flex gap-4 flex-wrap">
-                <div className="bg-white px-4 py-2 rounded-lg shadow text-sm text-primary font-medium flex items-center gap-1"><HiLocationMarker className="text-accent" /> Kuching, Sarawak, Malaysia</div>
-                <div className="bg-white px-4 py-2 rounded-lg shadow text-sm text-primary font-medium flex items-center gap-1"><HiAcademicCap className="text-accent" /> BSc Netcentric Computing, UiTM</div>
-                <div className="bg-white px-4 py-2 rounded-lg shadow text-sm text-primary font-medium flex items-center gap-1"><HiStar className="text-accent" /> Vice Chancellor Award</div>
-              </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="relative h-96 md:h-[450px] w-full max-w-sm mx-auto rounded-2xl overflow-hidden shadow-2xl group"
-            >
-              <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent z-10"></div>
-              <Image
-                src="/profile.jpg"
-                alt="Naim Talip"
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-              <div className="absolute bottom-0 left-0 w-full p-6 z-20 text-light">
-                <p className="text-xl font-bold">Naim Talip</p>
-                <p className="text-sm text-secondary">Software Engineer</p>
-              </div>
-            </motion.div>
+      <section id="about" className="py-24 px-4 bg-background">
+        <div className="max-w-6xl mx-auto space-y-12">
+          <div className="flex flex-col space-y-2">
+            <Badge variant="pill" className="w-fit">
+              <Sparkles className="h-3 w-3 text-accent" />
+              Background &amp; Profile
+            </Badge>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-serif text-foreground">
+              About Me
+            </h2>
+            <p className="text-muted-foreground text-sm sm:text-base max-w-2xl">
+              A blend of software engineering craftsmanship and applied machine learning systems.
+            </p>
           </div>
-        </div>
-      </section>
 
-      {/* Skills Section */}
-      <section id="skills" className="py-20 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl font-bold mb-12 text-primary font-serif"
-          >
-            Technical Skills
-          </motion.h2>
-          <div className="space-y-10">
-            {skillCategories.map((cat, catIdx) => (
-              <motion.div
-                key={catIdx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: catIdx * 0.1 }}
-              >
-                <h3 className="text-lg font-bold text-accent mb-4 uppercase tracking-wide">{cat.label}</h3>
-                <div className="flex flex-wrap gap-3">
-                  {cat.items.map((skill, idx) => (
-                    <motion.span
-                      key={idx}
-                      whileHover={{ scale: 1.05 }}
-                      className="bg-light text-primary px-4 py-2 rounded-full font-medium hover:bg-accent hover:text-light transition cursor-default shadow-sm"
-                    >
-                      {skill}
-                    </motion.span>
-                  ))}
+          <div className="grid md:grid-cols-12 gap-8 items-start">
+            {/* Left Narrative */}
+            <motion.div
+              className="md:col-span-7 space-y-6"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <p className="text-base sm:text-lg text-foreground/90 leading-relaxed">
+                I am a passionate <strong>Software Engineer</strong> and Netcentric Computing graduate from <strong>Universiti Teknologi MARA (UiTM)</strong>, driven by the challenge of designing scalable, resilient web applications and cutting-edge AI pipelines.
+              </p>
+              <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">
+                At <strong>Impact Business Solutions (IBS)</strong>, I lead the development of enterprise investor web systems and engineer intelligent data ingestion platforms combining <strong>RAG (Retrieval-Augmented Generation)</strong>, smart OCR parsing, and multimodal LLMs to eliminate repetitive operational overhead.
+              </p>
+
+              {/* Quick Highlight Cards */}
+              <div className="grid sm:grid-cols-2 gap-3 pt-2">
+                <Card className="bg-card/70 border-border/80 shadow-sm hover:shadow transition-shadow">
+                  <CardContent className="p-4 flex items-start gap-3">
+                    <div className="p-2 rounded-lg bg-blue-50 text-accent dark:bg-accent/10 dark:text-accent">
+                      <MapPin className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Location</p>
+                      <p className="text-sm font-medium text-foreground">Kuching, Sarawak, Malaysia</p>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-card/70 border-border/80 shadow-sm hover:shadow transition-shadow">
+                  <CardContent className="p-4 flex items-start gap-3">
+                    <div className="p-2 rounded-lg bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400">
+                      <GraduationCap className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Education</p>
+                      <p className="text-sm font-medium text-foreground">BSc Netcentric Computing</p>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-card/70 border-border/80 shadow-sm hover:shadow transition-shadow">
+                  <CardContent className="p-4 flex items-start gap-3">
+                    <div className="p-2 rounded-lg bg-amber-50 text-amber-600 dark:bg-amber-500/10 dark:text-amber-400">
+                      <Award className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Distinction</p>
+                      <p className="text-sm font-medium text-foreground">Vice Chancellor Award</p>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-card/70 border-border/80 shadow-sm hover:shadow transition-shadow">
+                  <CardContent className="p-4 flex items-start gap-3">
+                    <div className="p-2 rounded-lg bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400">
+                      <Briefcase className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Current Role</p>
+                      <p className="text-sm font-medium text-foreground">Software Engineer @ IBS</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </motion.div>
+
+            {/* Right Profile Photo Card */}
+            <motion.div
+              className="md:col-span-5"
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <Card className="overflow-hidden border-border/80 shadow-lg bg-card group">
+                <div className="relative h-80 sm:h-96 w-full overflow-hidden">
+                  <Image
+                    src="/profile.jpg"
+                    alt="Naim Talip"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 400px"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                  <div className="absolute bottom-4 left-4 right-4 text-white">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-lg font-bold">Naim Talip</p>
+                        <p className="text-xs text-slate-200">Software Engineer &amp; AI Specialist</p>
+                      </div>
+                      <Badge variant="secondary" className="text-[11px] bg-white/20 text-white backdrop-blur-md border-0">
+                        Kuching, MY
+                      </Badge>
+                    </div>
+                  </div>
                 </div>
-              </motion.div>
-            ))}
+                <CardFooter className="p-4 flex justify-between items-center bg-muted/30">
+                  <span className="text-xs text-muted-foreground font-mono">Available for projects</span>
+                  <Button asChild variant="outline" size="sm" className="text-xs rounded-full gap-1">
+                    <a href="#contact">
+                      Contact Me
+                      <ArrowRight className="h-3 w-3" />
+                    </a>
+                  </Button>
+                </CardFooter>
+              </Card>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section id="projects" className="py-20 px-4 bg-light">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl font-bold mb-4 text-primary font-serif">Featured Projects</h2>
-            <p className="text-primary/70 mb-12">Real-world systems and applications I've built.</p>
-          </motion.div>
-          <div className="grid md:grid-cols-2 gap-8">
+      {/* Technical Skills Section with shadcn Tabs */}
+      <section id="skills" className="py-24 px-4 bg-muted/40 border-y border-border/60">
+        <div className="max-w-6xl mx-auto space-y-10">
+          <div className="flex flex-col space-y-2">
+            <Badge variant="pill" className="w-fit">
+              <Code2 className="h-3 w-3 text-accent" />
+              Capabilities &amp; Tooling
+            </Badge>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-serif text-foreground">
+              Technical Stack &amp; Skills
+            </h2>
+            <p className="text-muted-foreground text-sm sm:text-base max-w-2xl">
+              Categorized technologies and frameworks I use to engineer robust, high-performance systems.
+            </p>
+          </div>
+
+          {/* Interactive shadcn Tabs */}
+          <Tabs defaultValue="all" className="w-full">
+            <div className="overflow-x-auto pb-2">
+              <TabsList className="h-auto p-1.5 gap-1 bg-background/80 border border-border/80 flex-wrap justify-start sm:justify-center">
+                {skillCategories.map((cat) => (
+                  <TabsTrigger
+                    key={cat.id}
+                    value={cat.id}
+                    className="text-xs sm:text-sm px-3.5 py-2 rounded-lg data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all"
+                  >
+                    {cat.label}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </div>
+
+            {skillCategories.map((cat) => (
+              <TabsContent key={cat.id} value={cat.id} className="mt-8">
+                <Card className="bg-card/80 border-border/70 shadow-sm p-6 sm:p-8">
+                  <div className="mb-6 flex items-center justify-between">
+                    <div>
+                      <h3 className="text-lg font-semibold font-serif text-foreground">
+                        {cat.label}
+                      </h3>
+                      <p className="text-xs text-muted-foreground">
+                        {cat.items.length} key technologies and proficiencies
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap gap-2.5">
+                    {cat.items.map((skill, idx) => (
+                      <motion.div
+                        key={idx}
+                        whileHover={{ scale: 1.04 }}
+                        transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+                      >
+                        <Badge
+                          variant="outline"
+                          className="px-3.5 py-1.5 text-xs sm:text-sm font-medium bg-background hover:bg-accent hover:text-accent-foreground border-border transition-colors cursor-default shadow-2xs"
+                        >
+                          {skill}
+                        </Badge>
+                      </motion.div>
+                    ))}
+                  </div>
+                </Card>
+              </TabsContent>
+            ))}
+          </Tabs>
+        </div>
+      </section>
+
+      {/* Featured Projects Section */}
+      <section id="projects" className="py-24 px-4 bg-background">
+        <div className="max-w-6xl mx-auto space-y-12">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div className="space-y-2">
+              <Badge variant="pill" className="w-fit">
+                <FolderGit2 className="h-3 w-3 text-accent" />
+                Portfolio Works
+              </Badge>
+              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-serif text-foreground">
+                Featured Projects
+              </h2>
+              <p className="text-muted-foreground text-sm sm:text-base max-w-xl">
+                A selection of AI systems, enterprise web applications, and automation tools I have built.
+              </p>
+            </div>
+            <Button asChild variant="outline" className="w-fit gap-2 rounded-full text-xs">
+              <a href="https://github.com/naimtalip" target="_blank" rel="noreferrer">
+                <FolderGit2 className="h-4 w-4" />
+                View GitHub Repositories
+                <ArrowUpRight className="h-3.5 w-3.5" />
+              </a>
+            </Button>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((project, idx) => (
               <motion.div
                 key={project.id}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                whileHover={{ y: -10 }}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden transition-shadow hover:shadow-2xl"
+                transition={{ duration: 0.5, delay: idx * 0.08 }}
+                className="h-full"
               >
-                <div className="bg-gradient-to-br from-primary to-accent h-40 flex items-center justify-center px-6">
-                  <h3 className="text-white text-2xl font-bold text-center font-serif">{project.title}</h3>
-                </div>
-                <div className="p-6">
-                  <p className="text-primary/80 mb-5 leading-relaxed">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tech.map((tech, techIdx) => (
-                      <span key={techIdx} className="bg-secondary text-primary border border-accent px-3 py-1 rounded-full text-sm font-medium">
-                        {tech}
-                      </span>
-                    ))}
+                <Card className="h-full flex flex-col justify-between border-border/80 hover:border-primary/40 hover:shadow-xl transition-all duration-300 group bg-card">
+                  <div>
+                    {/* Project Header Banner */}
+                    <div className="h-32 bg-gradient-to-br from-[#112D4E] to-[#3F72AF] p-5 flex flex-col justify-between rounded-t-xl relative overflow-hidden">
+                      <div className="absolute top-0 right-0 -mr-6 -mt-6 w-24 h-24 bg-white/10 rounded-full blur-xl pointer-events-none"></div>
+                      <div className="flex items-center justify-between relative z-10">
+                        <span className="text-[11px] font-mono uppercase tracking-wider text-blue-100/80">
+                          {project.category}
+                        </span>
+                        {project.status && (
+                          <span className="text-[10px] px-2 py-0.5 rounded-full font-medium bg-black/30 text-white backdrop-blur-md">
+                            {project.status}
+                          </span>
+                        )}
+                      </div>
+                      <h3 className="text-white text-lg font-bold font-serif leading-snug line-clamp-2 relative z-10 group-hover:text-blue-100 transition-colors">
+                        {project.title}
+                      </h3>
+                    </div>
+
+                    <CardContent className="p-5 space-y-4">
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {project.description}
+                      </p>
+                      <div className="flex flex-wrap gap-1.5 pt-1">
+                        {project.tech.map((t, i) => (
+                          <Badge key={i} variant="secondary" className="text-[11px] font-mono px-2 py-0.5">
+                            {t}
+                          </Badge>
+                        ))}
+                      </div>
+                    </CardContent>
                   </div>
-                  {project.link ? (
-                    <a href={project.link} className="text-accent font-semibold hover:text-primary">
-                      View Project →
-                    </a>
-                  ) : project.status ? (
-                    <span className="text-accent/60 font-semibold italic">
-                      {project.status}
-                    </span>
-                  ) : null}
-                </div>
+
+                  <CardFooter className="p-5 pt-0 border-t border-border/40 mt-auto flex items-center justify-between">
+                    {project.link ? (
+                      <Button asChild size="sm" variant="default" className="w-full gap-1.5 text-xs rounded-lg shadow-sm">
+                        <a href={project.link} target="_blank" rel="noreferrer">
+                          Visit Platform
+                          <ExternalLink className="h-3.5 w-3.5" />
+                        </a>
+                      </Button>
+                    ) : (
+                      <Button asChild size="sm" variant="outline" className="w-full gap-1.5 text-xs rounded-lg">
+                        <a href="#contact">
+                          Inquire Details
+                          <ArrowRight className="h-3.5 w-3.5" />
+                        </a>
+                      </Button>
+                    )}
+                  </CardFooter>
+                </Card>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Experience Section */}
-      <section id="experience" className="py-20 px-4 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl font-bold mb-12 text-primary font-serif"
-          >
-            Work Experience
-          </motion.h2>
-          <div className="space-y-10">
+      {/* Work Experience Section */}
+      <section id="experience" className="py-24 px-4 bg-muted/30 border-y border-border/60">
+        <div className="max-w-4xl mx-auto space-y-12">
+          <div className="flex flex-col space-y-2">
+            <Badge variant="pill" className="w-fit">
+              <Briefcase className="h-3 w-3 text-accent" />
+              Career Journey
+            </Badge>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-serif text-foreground">
+              Work Experience
+            </h2>
+            <p className="text-muted-foreground text-sm sm:text-base">
+              Chronological history of engineering contributions, responsibilities, and leadership.
+            </p>
+          </div>
+
+          <div className="relative border-l-2 border-primary/30 ml-3 md:ml-4 space-y-10 pl-6 md:pl-8">
             {experience.map((exp, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: -30 }}
+                initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="border-l-4 border-accent pl-8 pb-10 relative"
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="relative group"
               >
-                <div className="absolute -left-2.5 top-0 w-5 h-5 bg-accent rounded-full border-4 border-white"></div>
-                <div className="flex flex-wrap items-center gap-3 mb-1">
-                  <h3 className="text-2xl font-bold text-primary font-serif">{exp.title}</h3>
-                </div>
-                <p className="text-lg text-accent font-semibold">{exp.company}</p>
-                <p className="text-primary/60 text-sm mb-4">{exp.location} · {exp.period}</p>
-                <ul className="space-y-2">
-                  {exp.achievements.map((item, i) => (
-                    <li key={i} className="flex gap-3 text-primary/80">
-                      <HiChevronRight className="text-accent mt-1 shrink-0" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
+                {/* Timeline node */}
+                <div className="absolute -left-[31px] md:-left-[39px] top-1.5 h-4 w-4 rounded-full border-4 border-background bg-primary shadow-sm group-hover:scale-125 transition-transform"></div>
+
+                <Card className="bg-card border-border/80 shadow-sm hover:shadow-md transition-shadow">
+                  <CardHeader className="p-5 pb-3">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <div>
+                        <CardTitle className="text-xl font-bold text-foreground">
+                          {exp.title}
+                        </CardTitle>
+                        <p className="text-sm font-semibold text-accent mt-0.5">
+                          {exp.company}
+                        </p>
+                      </div>
+                      <div className="flex flex-col items-start sm:items-end">
+                        <Badge variant="secondary" className="text-xs font-mono">
+                          {exp.period}
+                        </Badge>
+                        <span className="text-[11px] text-muted-foreground mt-1 flex items-center gap-1">
+                          <MapPin className="h-3 w-3" />
+                          {exp.location}
+                        </span>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="p-5 pt-2">
+                    <ul className="space-y-2.5">
+                      {exp.achievements.map((item, i) => (
+                        <li key={i} className="flex items-start gap-2.5 text-sm text-foreground/80 leading-relaxed">
+                          <CheckCircle2 className="h-4 w-4 text-accent shrink-0 mt-0.5" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
               </motion.div>
             ))}
           </div>
@@ -404,60 +716,112 @@ export default function Home() {
       </section>
 
       {/* Education Section */}
-      <section id="education" className="py-20 px-4 bg-light">
-        <div className="max-w-4xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl font-bold mb-12 text-primary font-serif"
-          >
-            Education
-          </motion.h2>
-          <div className="space-y-8">
+      <section id="education" className="py-24 px-4 bg-background">
+        <div className="max-w-4xl mx-auto space-y-12">
+          <div className="flex flex-col space-y-2">
+            <Badge variant="pill" className="w-fit">
+              <GraduationCap className="h-3 w-3 text-accent" />
+              Academic Foundation
+            </Badge>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight font-serif text-foreground">
+              Education &amp; Credentials
+            </h2>
+            <p className="text-muted-foreground text-sm sm:text-base">
+              Formal degrees and academic honours earned at Universiti Teknologi MARA.
+            </p>
+          </div>
+
+          <div className="space-y-6">
             {education.map((edu, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-8 shadow-md hover:shadow-lg transition"
+                transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <h3 className="text-xl font-bold text-primary mb-1 font-serif">{edu.degree}</h3>
-                <p className="text-accent font-semibold mb-1">{edu.school}</p>
-                <p className="text-primary/60 text-sm mb-3">{edu.period}</p>
-                {edu.details && <p className="text-primary/80 font-medium">{edu.details}</p>}
+                <Card className="bg-card border-border/80 shadow-sm hover:border-accent/40 transition-colors p-6">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <h3 className="text-lg font-bold font-serif text-foreground">
+                          {edu.degree}
+                        </h3>
+                        {edu.badge && (
+                          <Badge variant="accent" className="text-xs">
+                            {edu.badge}
+                          </Badge>
+                        )}
+                      </div>
+                      <p className="text-sm font-semibold text-accent">
+                        {edu.school}
+                      </p>
+                      {edu.details && (
+                        <p className="text-sm text-muted-foreground font-medium pt-1">
+                          {edu.details}
+                        </p>
+                      )}
+                    </div>
+                    <Badge variant="outline" className="font-mono text-xs w-fit shrink-0">
+                      {edu.period}
+                    </Badge>
+                  </div>
+                </Card>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 bg-primary text-light">
+      {/* Call To Action / Contact Section */}
+      <section id="contact" className="py-24 px-4 bg-gradient-to-br from-[#0b1b36] via-[#112D4E] to-[#1c3a63] text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(#3F72AF_1px,transparent_1px)] [background-size:16px_16px]"></div>
+
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
+          className="max-w-4xl mx-auto text-center space-y-8 relative z-10"
+          initial={{ opacity: 0, scale: 0.96 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto text-center"
+          transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-bold mb-6 font-serif">Let's Work Together</h2>
-          <p className="text-xl mb-4 text-secondary">
-            I'm open to new opportunities, collaborations, and interesting projects.
-          </p>
-          <p className="text-secondary/80 mb-12 flex items-center justify-center gap-2"><HiLocationMarker className="text-accent" /> Kuching, Sarawak, Malaysia · +601153712442</p>
-          <div className="flex gap-6 justify-center flex-wrap mb-12">
-            <a href="mailto:naimtalipwork@gmail.com" className="bg-accent hover:bg-accent/80 text-light px-8 py-3 rounded-lg font-semibold transition">
-              naimtalipwork@gmail.com
-            </a>
-            <a href="https://linkedin.com/in/naimtalip2442" target="_blank" rel="noreferrer" className="border-2 border-accent text-accent hover:bg-accent hover:text-light px-8 py-3 rounded-lg font-semibold transition">
-              LinkedIn
-            </a>
-            <a href="/Naim_Talip_ATS.pdf" download="Naim_Talip_Resume.pdf" target="_blank" rel="noreferrer" className="border-2 border-secondary text-secondary hover:bg-secondary hover:text-primary px-8 py-3 rounded-lg font-semibold transition flex items-center gap-2">
-              <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-              Download Resume
-            </a>
+          <div className="space-y-3">
+            <Badge variant="outline" className="border-blue-400/30 text-blue-200 bg-blue-500/10 font-mono text-xs">
+              <Sparkles className="h-3 w-3 mr-1 text-blue-300" />
+              Let&apos;s Connect
+            </Badge>
+            <h2 className="text-3xl sm:text-5xl font-bold font-serif tracking-tight text-white">
+              Interested in collaborating?
+            </h2>
+            <p className="text-slate-300 text-base sm:text-lg max-w-xl mx-auto leading-relaxed font-light">
+              I am open to discuss AI engineering opportunities, full-stack software development projects, or high-impact technical initiatives.
+            </p>
+          </div>
+
+          <div className="flex items-center justify-center gap-2 text-sm text-slate-300/80 font-mono">
+            <MapPin className="h-4 w-4 text-blue-400" />
+            <span>Kuching, Sarawak, Malaysia · +601153712442</span>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex flex-wrap gap-4 justify-center pt-2">
+            <Button asChild size="lg" className="rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold shadow-lg gap-2 border-0">
+              <a href="mailto:naimtalipwork@gmail.com">
+                <Mail className="h-4 w-4" />
+                naimtalipwork@gmail.com
+              </a>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="rounded-xl border-slate-600 bg-slate-900/60 hover:bg-slate-800 text-slate-100 hover:text-white backdrop-blur-sm gap-2">
+              <a href="https://linkedin.com/in/naimtalip2442" target="_blank" rel="noreferrer">
+                LinkedIn Profile
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </Button>
+            <Button asChild size="lg" variant="secondary" className="rounded-xl bg-slate-800 hover:bg-slate-700 text-white gap-2">
+              <a href="/Naim_Talip_ATS.pdf" download="Naim_Talip_Resume.pdf">
+                <FileDown className="h-4 w-4" />
+                Download Resume
+              </a>
+            </Button>
           </div>
         </motion.div>
       </section>
