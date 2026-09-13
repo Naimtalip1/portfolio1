@@ -139,10 +139,22 @@ export default function Home() {
 
   const experience = [
     {
+      title: 'Executive: AI, Robotics and Innovation Project Expert',
+      company: 'Tabung Ekonomi Gagasan Anak Sarawak (TEGAS)',
+      location: 'Kuching, Sarawak',
+      period: 'June 2026 – Present',
+      achievements: [
+        'Leading AI, robotics, and emerging technology project initiatives across Sarawak.',
+        'Planning and executing tech innovation programs, robotics workshops, and digital enablement ecosystems.',
+        'Advising on emerging AI trends, modern architectures, and adoption strategies for startups and partners.',
+        'Collaborating with industry leaders, educational institutions, and government bodies to foster tech talent.',
+      ],
+    },
+    {
       title: 'Software Engineer',
       company: 'Impact Business Solutions Sdn Bhd (IBS)',
       location: 'Kuching, Sarawak',
-      period: 'October 2025 – Present',
+      period: 'October 2025 – June 2026',
       achievements: [
         'Architecting GenAI log evaluation pipelines and synthetic validation environments for enterprise monitoring.',
         'Developing an enterprise RAG Hybrid system with multimodal LLMs and smart chunking to automate audit queries.',
@@ -324,7 +336,7 @@ export default function Home() {
                 </div>
                 <div className="text-slate-100 bg-slate-900/60 p-2.5 rounded-lg border border-slate-800/80">
                   <p className="font-semibold text-blue-300">Naim Talip</p>
-                  <p className="text-slate-300 text-[11px]">Software Engineer · IBS Sdn Bhd</p>
+                  <p className="text-slate-300 text-[11px]">Executive: AI, Robotics &amp; Innovation · TEGAS</p>
                   <p className="text-slate-400 text-[11px]">UiTM Netcentric Computing (BSc Hons)</p>
                 </div>
 
@@ -385,7 +397,7 @@ export default function Home() {
                 I am a passionate <strong>Software Engineer</strong> and Netcentric Computing graduate from <strong>Universiti Teknologi MARA (UiTM)</strong>, driven by the challenge of designing scalable, resilient web applications and cutting-edge AI pipelines.
               </p>
               <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">
-                At <strong>Impact Business Solutions (IBS)</strong>, I lead the development of enterprise investor web systems and engineer intelligent data ingestion platforms combining <strong>RAG (Retrieval-Augmented Generation)</strong>, smart OCR parsing, and multimodal LLMs to eliminate repetitive operational overhead.
+                Currently serving as an <strong>Executive: AI, Robotics and Innovation Project Expert at TEGAS (Tabung Ekonomi Gagasan Anak Sarawak)</strong>, driving digital innovation, robotics programs, and emerging tech enablement. Previously at <strong>Impact Business Solutions (IBS)</strong>, I engineered enterprise RAG data systems, multimodal AI tools, and full-stack investor platforms.
               </p>
 
               {/* Quick Highlight Cards */}
@@ -433,7 +445,7 @@ export default function Home() {
                     </div>
                     <div>
                       <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Current Role</p>
-                      <p className="text-sm font-medium text-foreground">Software Engineer @ IBS</p>
+                      <p className="text-sm font-medium text-foreground">Executive: AI &amp; Robotics @ TEGAS</p>
                     </div>
                   </CardContent>
                 </Card>

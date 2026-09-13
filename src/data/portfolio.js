@@ -3,7 +3,7 @@
 export const portfolioData = {
   personal: {
     name: 'Naim Talip',
-    title: 'Software Engineer | AI Engineer | Full-Stack Developer',
+    title: 'Executive: AI, Robotics & Innovation | Software & AI Engineer',
     bio: 'Tech enthusiast and Netcentric Computing graduate from Universiti Teknologi MARA with a passion for software engineering and emerging technologies.',
     email: 'naimtalipwork@gmail.com',
     phone: '+601153712442',
@@ -15,7 +15,7 @@ export const portfolioData = {
     linkedin: 'https://linkedin.com/in/naimtalip2442',
   },
 
-  about: `Tech enthusiast and Netcentric Computing graduate from Universiti Teknologi MARA with a passion for software engineering and emerging technologies. Currently serving as a Software Engineer at IBS, specializing in AI-driven solutions, full-stack development, and rapid application development (RAD). A highly resourceful individual with strong responsibility towards given tasks.`,
+  about: `Tech enthusiast and Netcentric Computing graduate from Universiti Teknologi MARA with a passion for software engineering and emerging technologies. Currently serving as an Executive: AI, Robotics and Innovation Project Expert at TEGAS, specializing in digital innovation, robotics programs, and emerging tech enablement. Previously Software Engineer at IBS specializing in AI-driven solutions, full-stack development, and rapid application development (RAD). A highly resourceful individual with strong responsibility towards given tasks.`,
 
   skills: {
     core: ['AI Engineering', 'Full-Stack Development', 'Frontend Development', 'Backend Development', 'RAD', 'Mobile App Development'],
@@ -59,10 +59,23 @@ export const portfolioData = {
   experience: [
     {
       id: 1,
+      title: 'Executive: AI, Robotics and Innovation Project Expert',
+      company: 'Tabung Ekonomi Gagasan Anak Sarawak (TEGAS)',
+      location: 'Kuching, Sarawak',
+      period: 'June 2026 – Present',
+      achievements: [
+        'Leading AI, robotics, and emerging technology project initiatives across Sarawak.',
+        'Planning and executing tech innovation programs, robotics workshops, and digital enablement ecosystems.',
+        'Advising on emerging AI trends, modern architectures, and adoption strategies for startups and partners.',
+        'Collaborating with industry leaders, educational institutions, and government bodies to foster tech talent.',
+      ],
+    },
+    {
+      id: 2,
       title: 'Software Engineer',
       company: 'Impact Business Solutions Sdn Bhd (IBS)',
       location: 'Kuching, Sarawak',
-      period: 'October 2025 – Present',
+      period: 'October 2025 – June 2026',
       achievements: [
         'Developing use and test cases for GenAI environment for log monitoring system.',
         'Developing a RAG Hybrid system for data ingestion and analysis using smart parsing and open-source multimodal LLMs to reduce manual analysis costs for enterprises.',
@@ -72,7 +85,7 @@ export const portfolioData = {
       ],
     },
     {
-      id: 2,
+      id: 3,
       title: 'Sales Representative',
       company: 'Regas Premium Auto',
       location: 'Kuching, Sarawak',
@@ -83,7 +96,7 @@ export const portfolioData = {
       ],
     },
     {
-      id: 3,
+      id: 4,
       title: 'Industrial Trainee',
       company: 'Sarawak Information Systems Sdn. Bhd. (SAINS)',
       location: 'Kuching, Sarawak',
@@ -95,7 +108,7 @@ export const portfolioData = {
       ],
     },
     {
-      id: 4,
+      id: 5,
       title: 'Full-Stack Developer Trainee',
       company: 'Gearworks Technologies',
       location: 'Kuching, Sarawak',

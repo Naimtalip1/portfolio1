@@ -15,8 +15,8 @@ const inter = Inter({
 })
 
 export const metadata = {
-  title: 'Naim Talip - Software Engineer | AI & Full-Stack Developer',
-  description: 'Portfolio of Naim Talip — Software Engineer specializing in AI-driven solutions, full-stack development, and RAD. Based in Kuching, Sarawak.',
+  title: 'Naim Talip - Executive: AI, Robotics & Innovation | Software & AI Engineer',
+  description: 'Portfolio of Naim Talip — Executive: AI, Robotics and Innovation Project Expert at TEGAS, specializing in AI systems, full-stack engineering, and emerging tech enablement. Based in Kuching, Sarawak.',
 }
 
 export default function RootLayout({ children }) {
