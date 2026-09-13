@@ -237,17 +237,6 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
-            {/* Status Pill Badge */}
-            <div className="inline-flex items-center gap-2">
-              <span className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-500/10 px-3.5 py-1 text-xs font-mono text-blue-200 backdrop-blur-md">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                </span>
-                Available for Software &amp; AI Roles
-              </span>
-            </div>
-
             {/* Main Headline */}
             <div className="space-y-2">
               <p className="text-blue-200 font-mono tracking-wider uppercase text-xs sm:text-sm flex items-center gap-2">
